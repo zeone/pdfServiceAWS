@@ -9,6 +9,7 @@ using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using PDFServiceAWS.Dto;
 
 namespace PDFServiceAWS.Services.Implementation
 {

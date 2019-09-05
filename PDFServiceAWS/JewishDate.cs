@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Globalization;
 
-namespace PDFService
+namespace PDFServiceAWS
 {
     public class JewishDate
     {

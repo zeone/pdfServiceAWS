@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using PDFServiceAWS.DB.CustomTables;
+using PDFServiceAWS.Dto;
 
 namespace PDFServiceAWS.DB.SP
 {

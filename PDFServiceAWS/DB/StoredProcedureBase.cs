@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using Ninject.Infrastructure.Language;
 using PDFServiceAWS.DB.Builder;
 using PDFServiceAWS.Helpers;
 

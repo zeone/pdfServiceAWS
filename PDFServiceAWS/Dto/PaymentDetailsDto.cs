@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Xml.Serialization;
 using Newtonsoft.Json;
+using PDFServiceAWS.Enums;
 
 namespace PDFServiceAWS.Dto
 {

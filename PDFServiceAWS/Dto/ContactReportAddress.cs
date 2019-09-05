@@ -1,4 +1,5 @@
 ﻿using System;
+using PDFServiceAWS.Enums;
 
 namespace PDFServiceAWS.Dto
 {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using PDFServiceAWS.Enums;
 
 namespace PDFServiceAWS.Dto
 {

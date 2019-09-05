@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Configuration;
+using Microsoft.Extensions.Configuration;
+using Ninject;
+using Ninject.Parameters;
 
 namespace PDFServiceAWS.DB
 {
@@ -9,6 +13,7 @@ namespace PDFServiceAWS.DB
         private readonly StandardKernel _injectKernel;
         private string _baseConnectionString;
         private string _sharedConnectionString;
+
         // public string SharedSchema = Schemas.SharedSchema;
 
         public QueryProvider(StandardKernel injectKernel)

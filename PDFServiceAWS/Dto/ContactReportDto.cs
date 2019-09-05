@@ -1,4 +1,6 @@
-﻿namespace PDFServiceAWS.Dto
+﻿using PDFServiceAWS.Enums;
+
+namespace PDFServiceAWS.Dto
 {
     public class ContactReportDto
     {

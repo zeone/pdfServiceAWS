@@ -1,4 +1,6 @@
 ﻿using System;
+using Ninject;
+using Ninject.Parameters;
 using PDFServiceAWS.Enums;
 using PDFServiceAWS.Services;
 

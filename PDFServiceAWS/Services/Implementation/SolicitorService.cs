@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
-using PDFService.Enums;
+using PDFServiceAWS.Enums;
 using PDFServiceAWS.DB.SP;
+using PDFServiceAWS.Dto;
 using PDFServiceAWS.Helpers;
 using IQueryProvider = PDFServiceAWS.DB.IQueryProvider;
 

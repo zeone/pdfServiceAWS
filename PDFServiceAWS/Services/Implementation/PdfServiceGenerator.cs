@@ -6,6 +6,7 @@ using System.Text;
 using System.Web;
 using Ninject;
 using Ninject.Parameters;
+using PDFServiceAWS.Dto;
 using PDFServiceAWS.Enums;
 using PDFServiceAWS.Services.Implementation.PdfServiceFormats;
 using PdfSharp;

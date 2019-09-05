@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using PDFServiceAWS.DB.SP;
+using PDFServiceAWS.Dto;
 using PDFServiceAWS.Helpers;
 using IQueryProvider = PDFServiceAWS.DB.IQueryProvider;
 

@@ -4,6 +4,7 @@ using System.IO;
 using System.Reflection;
 using System.Text;
 using System.Xml.Serialization;
+using PDFServiceAWS.Dto;
 using PDFServiceAWS.Helpers;
 
 namespace PDFServiceAWS.DB.Builder

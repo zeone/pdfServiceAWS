@@ -4,7 +4,8 @@ using System.Linq;
 using System.Web;
 using MigraDoc.DocumentObjectModel;
 using MigraDoc.DocumentObjectModel.Tables;
-using PDFService.Enums;
+using PDFServiceAWS.Dto;
+using PDFServiceAWS.Enums;
 using PDFServiceAWS.Helpers;
 using PdfSharp.Pdf;
 

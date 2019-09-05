@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using PDFServiceAWS.Dto;
 
 namespace PDFServiceAWS.DB.SP
 {

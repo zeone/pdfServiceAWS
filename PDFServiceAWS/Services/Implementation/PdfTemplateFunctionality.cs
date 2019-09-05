@@ -8,6 +8,7 @@ using MigraDoc.DocumentObjectModel;
 using MigraDoc.DocumentObjectModel.Tables;
 using MigraDoc.DocumentObjectModel.Shapes;
 using MigraDoc.Rendering;
+using PDFServiceAWS.Dto;
 using PDFServiceAWS.Helpers;
 using PdfSharp.Drawing;
 using PdfSharp.Pdf;

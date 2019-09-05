@@ -5,12 +5,14 @@ using System.Linq;
 using System.Web;
 using System.Xml;
 using AutoMapper;
+using Microsoft.Extensions.DependencyInjection;
 using Ninject;
 using Ninject.Parameters;
 using PDFServiceAWS.Enums;
 using PDFServiceAWS.DB.SP;
 using PDFServiceAWS.Dto;
 using PDFServiceAWS.Helpers;
+//using Microsoft.Extensions.DependencyInjection;
 using IQueryProvider = PDFServiceAWS.DB.IQueryProvider;
 
 namespace PDFServiceAWS.Services.Implementation
@@ -36,10 +38,13 @@ namespace PDFServiceAWS.Services.Implementation
         private IGroupingService _catService;
         private readonly ITransactionReportPdfService _transPdfService;
         private readonly IContactReportPdfService _contactPdfService;
+        private readonly IServiceProvider _serviceProvider;
 
-        public ReportService(IQueryProvider queryProvider, string schema) : base(queryProvider)
+        public ReportService(IQueryProvider queryProvider, IServiceProvider serviceProvider, string schema) : base(queryProvider)
         {
             _schema = schema;
+            _serviceProvider = serviceProvider;
+            _groupingService = _serviceProvider.GetRequiredService<IReportGroupingService>();
             _groupingService = NinjectBulder.Container.Get<IReportGroupingService>(new ConstructorArgument("schema", schema));
             _transPdfService = NinjectBulder.Container.Get<ITransactionReportPdfService>(new ConstructorArgument("schema", schema));
             _contactPdfService = NinjectBulder.Container.Get<IContactReportPdfService>(new ConstructorArgument("schema", schema));

@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Reflection;
+using Ninject.Modules;
 
 namespace PDFServiceAWS.DB.Injections
 {

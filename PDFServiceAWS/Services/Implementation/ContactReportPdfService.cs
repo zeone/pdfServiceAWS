@@ -15,6 +15,7 @@ using PDFServiceAWS.Enums;
 using PDFServiceAWS.Services.Implementation.PdfServiceFormats;
 using PDFServiceAWS.Helpers;
 using BorderStyle = MigraDoc.DocumentObjectModel.BorderStyle;
+using Color = MigraDoc.DocumentObjectModel.Color;
 using Orientation = MigraDoc.DocumentObjectModel.Orientation;
 using TabAlignment = MigraDoc.DocumentObjectModel.TabAlignment;
 

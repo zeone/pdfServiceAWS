@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using PDFServiceAWS.Dto;
 using PDFServiceAWS.Services.Implementation.PdfServiceFormats;
 
 namespace PDFServiceAWS.Services

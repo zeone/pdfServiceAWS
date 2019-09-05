@@ -1,6 +1,7 @@
 ﻿using System.Data;
 using System.Reflection;
 using Newtonsoft.Json;
+using PDFServiceAWS.Dto;
 using PDFServiceAWS.Helpers;
 
 namespace PDFServiceAWS.DB.Builder
