@@ -12,7 +12,7 @@ namespace PDFServiceAWS.Services.Implementation
 {
     public class ExecutionService : IExecutionService
     {
-        static IReportService _service;
+    //    static IReportService _service;
 
         ConcurrentDictionary<string, QueueObject> queueDict = new ConcurrentDictionary<string, QueueObject>();
         ConcurrentDictionary<string, ServiceResponse> _sendingDict = new ConcurrentDictionary<string, ServiceResponse>();

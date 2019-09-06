@@ -25,12 +25,12 @@ namespace PDFServiceAWS.Controllers
 
         #region Filter and create Pdf report file
         [HttpPost]
-        public IActionResult GetContactPdf(ContactReportFilterRequest request)
+        public IActionResult GetContactPdf([FromBody]ContactReportFilterRequest request)
         {
             try
-            {
+            {                
                 _reportService = NinjectBulder.Container.Get<IReportService>(new ConstructorArgument("schema", request.Schema));
-
+          
                 _executionService.AddTask($"{request.ReportQId}_{request.Schema}",
                     (object)request, _reportService.GetContactPdf);
             }
@@ -44,7 +44,7 @@ namespace PDFServiceAWS.Controllers
 
 
         [HttpPost]
-        public IActionResult GetTransactionPdf(TransactionReportFilterRequest request)
+        public IActionResult GetTransactionPdf([FromBody]TransactionReportFilterRequest request)
         {
             try
             {
@@ -65,7 +65,7 @@ namespace PDFServiceAWS.Controllers
         #region Create only Pdf report file
 
         [HttpPost]
-        public IActionResult CreateContactReportPDf(ContactReportPdfOnlyRequest request)
+        public IActionResult CreateContactReportPDf([FromBody]ContactReportPdfOnlyRequest request)
         {
             try
             {
@@ -88,7 +88,7 @@ namespace PDFServiceAWS.Controllers
 
 
         [HttpPost]
-        public IActionResult CreateTransactionReportPDf(TransactionReportPdfOnlyRequest request)
+        public IActionResult CreateTransactionReportPDf([FromBody]TransactionReportPdfOnlyRequest request)
         {
             try
             {
