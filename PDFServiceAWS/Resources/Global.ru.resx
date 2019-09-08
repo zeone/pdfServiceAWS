@@ -1,0 +1,1020 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="ForgotPwd" xml:space="preserve">
+    <value>Забыли пароль?</value>
+  </data>
+  <data name="NewBill" xml:space="preserve">
+    <value>Новый счёт</value>
+  </data>
+  <data name="NewPayment" xml:space="preserve">
+    <value>Новый платёж</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Пароль</value>
+  </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>Запомнить</value>
+  </data>
+  <data name="SignIn" xml:space="preserve">
+    <value>Войти</value>
+  </data>
+  <data name="SignInMsg" xml:space="preserve">
+    <value>Введите логин и пароль</value>
+  </data>
+  <data name="delete_modal_Areyousure" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="BackToReg" xml:space="preserve">
+    <value>Вернуться к регистрации</value>
+  </data>
+  <data name="BackToSign" xml:space="preserve">
+    <value>Назад войти в систему!</value>
+  </data>
+  <data name="Browser" xml:space="preserve">
+    <value>Браузер</value>
+  </data>
+  <data name="CanNotApprove" xml:space="preserve">
+    <value>Мы сожалеем, но мы не могли верифицировать ваш адрес электронной почты.</value>
+  </data>
+  <data name="CheckEmail" xml:space="preserve">
+    <value>Пожалуйста, проверьте емэйл!</value>
+  </data>
+  <data name="Comment" xml:space="preserve">
+    <value>Комментарий</value>
+  </data>
+  <data name="ConfirmPwd" xml:space="preserve">
+    <value>...и снова наберите его</value>
+  </data>
+  <data name="ConfirmSMS" xml:space="preserve">
+    <value>Подтвердите по СМС</value>
+  </data>
+  <data name="Congrats" xml:space="preserve">
+    <value>Поздравляем!!</value>
+  </data>
+  <data name="ContactAdmin" xml:space="preserve">
+    <value>Пожалуйста, обратитесь к администратору CMS Chabad!</value>
+  </data>
+  <data name="ContactUs" xml:space="preserve">
+    <value>Свяжитесь с нами!</value>
+  </data>
+  <data name="DeviceConfirmed" xml:space="preserve">
+    <value>Новое устройство / браузер было подтверждено !!</value>
+  </data>
+  <data name="DeviceConfirmedAlready" xml:space="preserve">
+    <value>Новое устройство / браузер уже подтвержден !!</value>
+  </data>
+  <data name="DeviceType" xml:space="preserve">
+    <value>• Device Type (Тип устройства):</value>
+  </data>
+  <data name="DiffBrowser" xml:space="preserve">
+    <value>Похоже, вы используете другой браузер, так как в последний раз вы вошли в систему.!</value>
+  </data>
+  <data name="EmailConfirmed" xml:space="preserve">
+    <value>Вы успешно подтвердили свой адрес электронной почты :!</value>
+  </data>
+  <data name="EnterSMSCode" xml:space="preserve">
+    <value>Мы послали вам код подтверждения по смс. Пожалуйста, введите код :!</value>
+  </data>
+  <data name="FailedConfirmDevice" xml:space="preserve">
+    <value>Ой ... Нам не удалось подтвердить новое устройство / браузер.!</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="FollowLink1" xml:space="preserve">
+    <value>и следуйте по ссылке для восстановления пароля!</value>
+  </data>
+  <data name="FollowLink2" xml:space="preserve">
+    <value>и следуйте инструкциям, чтобы подтвердить свой аккаунт CMS!</value>
+  </data>
+  <data name="FollowLink3" xml:space="preserve">
+    <value>вновь подтвердить свой аккаунт CMS.!</value>
+  </data>
+  <data name="Gifts" xml:space="preserve">
+    <value>Подарки</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Фамилия</value>
+  </data>
+  <data name="Log" xml:space="preserve">
+    <value>ВХОД</value>
+  </data>
+  <data name="LogIn" xml:space="preserve">
+    <value>Вход</value>
+  </data>
+  <data name="NeedPhoneMsg" xml:space="preserve">
+    <value>Для авторизации безопасности, нам нужно иметь свой телефон !!</value>
+  </data>
+  <data name="NewDeviceLogin_EnterSMS" xml:space="preserve">
+    <value>Введите логин и пароль от нового устройства. Для подтверждения безопасности, введите код с SMS :!</value>
+  </data>
+  <data name="NoAccount" xml:space="preserve">
+    <value>Нет учетной записи?</value>
+  </data>
+  <data name="NoEmail" xml:space="preserve">
+    <value>Ой ... Мы не смогли найти вас с вашей электронной почтой!</value>
+  </data>
+  <data name="NoPhone" xml:space="preserve">
+    <value>У нас нет свой номер телефона!</value>
+  </data>
+  <data name="NowYouCan1" xml:space="preserve">
+    <value>Теперь вы можете:</value>
+  </data>
+  <data name="NowYouCan2" xml:space="preserve">
+    <value>на свой счет CMS!</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>Ладно!</value>
+  </data>
+  <data name="Organization" xml:space="preserve">
+    <value>Организация</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Телефонный номер</value>
+  </data>
+  <data name="Platform" xml:space="preserve">
+    <value>Платформа</value>
+  </data>
+  <data name="ProvideEmail" xml:space="preserve">
+    <value>Пожалуйста, укажите ваш зарегистрированный электронной почте!</value>
+  </data>
+  <data name="PwdChanged1" xml:space="preserve">
+    <value>Пароль изменён</value>
+  </data>
+  <data name="PwdChanged2" xml:space="preserve">
+    <value>Ваш пароль был изменен.</value>
+  </data>
+  <data name="PwdRecover" xml:space="preserve">
+    <value>восстановление пароля</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Регистрация</value>
+  </data>
+  <data name="Registration" xml:space="preserve">
+    <value>Регистрация</value>
+  </data>
+  <data name="Request" xml:space="preserve">
+    <value>просьбу.</value>
+  </data>
+  <data name="ResetPwd" xml:space="preserve">
+    <value>Сброс пароля</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Отправить</value>
+  </data>
+  <data name="SendUsMsg" xml:space="preserve">
+    <value>Отправьте нам сообщение с формой ниже!</value>
+  </data>
+  <data name="SetNewPwd" xml:space="preserve">
+    <value>Теперь вы можете создать новый пароль!</value>
+  </data>
+  <data name="SignForDemo" xml:space="preserve">
+    <value>Регистрация Для демо-счет!</value>
+  </data>
+  <data name="SMSCode" xml:space="preserve">
+    <value>SMS код отправлен</value>
+  </data>
+  <data name="SorryMsg1" xml:space="preserve">
+    <value>К сожалению мы не можем отправить сообщение, пожалуйста, повторите позже!</value>
+  </data>
+  <data name="ThanksForRegister" xml:space="preserve">
+    <value>Спасибо за регистрацию</value>
+  </data>
+  <data name="UseCMS" xml:space="preserve">
+    <value>Я в настоящее время используют CMS!</value>
+  </data>
+  <data name="ValidateEmail" xml:space="preserve">
+    <value>Пожалуйста, подтвердите свой адрес электронной почты!</value>
+  </data>
+  <data name="WrongMsg" xml:space="preserve">
+    <value>Сообщение ISN `исправить!</value>
+  </data>
+  <data name="YouCanLogin" xml:space="preserve">
+    <value>Теперь вы можете войти легко!</value>
+  </data>
+  <data name="YourMsg" xml:space="preserve">
+    <value>Ваше сообщение</value>
+  </data>
+  <data name="YourName" xml:space="preserve">
+    <value>Ваше Имя</value>
+  </data>
+  <data name="Off" xml:space="preserve">
+    <value>Выключен</value>
+  </data>
+  <data name="On" xml:space="preserve">
+    <value>Вкл</value>
+  </data>
+  <data name="Bills" xml:space="preserve">
+    <value>Казначейские ценные бумаги США</value>
+  </data>
+  <data name="Payments" xml:space="preserve">
+    <value>Платежы</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
+    <value>Действия</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Адрес</value>
+  </data>
+  <data name="AfterDark" xml:space="preserve">
+    <value>После</value>
+  </data>
+  <data name="Age" xml:space="preserve">
+    <value>Возраст</value>
+  </data>
+  <data name="BirthDate" xml:space="preserve">
+    <value>Дата рождения</value>
+  </data>
+  <data name="Both" xml:space="preserve">
+    <value>В обоих!</value>
+  </data>
+  <data name="Categories" xml:space="preserve">
+    <value>Категории</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="Clear" xml:space="preserve">
+    <value>Убрать</value>
+  </data>
+  <data name="ClearAll" xml:space="preserve">
+    <value>очистить все</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>ЗАКРЫТЬ</value>
+  </data>
+  <data name="Company" xml:space="preserve">
+    <value>Компания</value>
+  </data>
+  <data name="Contacts" xml:space="preserve">
+    <value>Habarlaşmak üçin</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Страна</value>
+  </data>
+  <data name="Current" xml:space="preserve">
+    <value>Текущий</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>Дашборд</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Дата</value>
+  </data>
+  <data name="Default" xml:space="preserve">
+    <value>По умолчанию</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="DeleteContact" xml:space="preserve">
+    <value>Удалить контакт</value>
+  </data>
+  <data name="Events" xml:space="preserve">
+    <value>Мероприятия</value>
+  </data>
+  <data name="Extension" xml:space="preserve">
+    <value>Расширение</value>
+  </data>
+  <data name="Families" xml:space="preserve">
+    <value>СЕМЬИ</value>
+  </data>
+  <data name="Family" xml:space="preserve">
+    <value>Семья</value>
+  </data>
+  <data name="FatherHebrew" xml:space="preserve">
+    <value>Отец иврит</value>
+  </data>
+  <data name="Female" xml:space="preserve">
+    <value>Женщина</value>
+  </data>
+  <data name="Gender" xml:space="preserve">
+    <value>Пол</value>
+  </data>
+  <data name="GeneralInfo" xml:space="preserve">
+    <value>Основное</value>
+  </data>
+  <data name="dashboard_Greg" xml:space="preserve">
+    <value>Грег.</value>
+  </data>
+  <data name="dashboard_Hebrew" xml:space="preserve">
+    <value>Еврейский</value>
+  </data>
+  <data name="HebrewName" xml:space="preserve">
+    <value>Иврит</value>
+  </data>
+  <data name="Her" xml:space="preserve">
+    <value>Ее!</value>
+  </data>
+  <data name="HerLabel" xml:space="preserve">
+    <value>этикетка</value>
+  </data>
+  <data name="HerSalutation" xml:space="preserve">
+    <value>Обращение</value>
+  </data>
+  <data name="His" xml:space="preserve">
+    <value>его</value>
+  </data>
+  <data name="HisLabel" xml:space="preserve">
+    <value>этикетка</value>
+  </data>
+  <data name="HisSalutation" xml:space="preserve">
+    <value>Обращение</value>
+  </data>
+  <data name="HisSlashHer" xml:space="preserve">
+    <value>Его ее!</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Главная</value>
+  </data>
+  <data name="IsActive" xml:space="preserve">
+    <value>Активный</value>
+  </data>
+  <data name="IsPrivate" xml:space="preserve">
+    <value>Частные</value>
+  </data>
+  <data name="ItemsPerPage" xml:space="preserve">
+    <value>Количество фото на странице</value>
+  </data>
+  <data name="Label" xml:space="preserve">
+    <value>Ярлык</value>
+  </data>
+  <data name="LabelSetting" xml:space="preserve">
+    <value>Настройки ярлыка</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>выход</value>
+  </data>
+  <data name="Male" xml:space="preserve">
+    <value>Мужской</value>
+  </data>
+  <data name="Mobile" xml:space="preserve">
+    <value>Мобильный</value>
+  </data>
+  <data name="dashboard_Month" xml:space="preserve">
+    <value>Месяц</value>
+  </data>
+  <data name="MotherHebrew" xml:space="preserve">
+    <value>Мать иврит!</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Наименование</value>
+  </data>
+  <data name="dashboard_NewMembers" xml:space="preserve">
+    <value>Новые пользователи</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Нет!</value>
+  </data>
+  <data name="NoMail" xml:space="preserve">
+    <value>Нет почты!</value>
+  </data>
+  <data name="None" xml:space="preserve">
+    <value>сброс</value>
+  </data>
+  <data name="edit_selected_items_modal_Note" xml:space="preserve">
+    <value>Note!</value>
+  </data>
+  <data name="categories_tree_NothingToShow" xml:space="preserve">
+    <value>Ничего не показывать.</value>
+  </data>
+  <data name="Number" xml:space="preserve">
+    <value>Номер!</value>
+  </data>
+  <data name="Photo" xml:space="preserve">
+    <value>Фото</value>
+  </data>
+  <data name="categories_PleaseSelectCategory" xml:space="preserve">
+    <value>Пожалуйста, выберите рубрику</value>
+  </data>
+  <data name="Plus4" xml:space="preserve">
+    <value>PLUS4!</value>
+  </data>
+  <data name="PrimaryOnly" xml:space="preserve">
+    <value>Базовое</value>
+  </data>
+  <data name="QuestionMark" xml:space="preserve">
+    <value>?!</value>
+  </data>
+  <data name="Relation" xml:space="preserve">
+    <value>Отношение</value>
+  </data>
+  <data name="Salutation" xml:space="preserve">
+    <value>Обращение</value>
+  </data>
+  <data name="SalutationSetting" xml:space="preserve">
+    <value>Приветствия Установка!</value>
+  </data>
+  <data name="dashboard_Save" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="SaveChanges" xml:space="preserve">
+    <value>Сохранить изменения</value>
+  </data>
+  <data name="dashboard_SelectPeriod" xml:space="preserve">
+    <value>Выберите период:</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>настройки</value>
+  </data>
+  <data name="contact_SharedFamilyContactInformation" xml:space="preserve">
+    <value>Общая семья Контактная информация :!</value>
+  </data>
+  <data name="ShowAll" xml:space="preserve">
+    <value>Показать все</value>
+  </data>
+  <data name="State" xml:space="preserve">
+    <value>Государство</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Заголовок</value>
+  </data>
+  <data name="dashboard_TotalNumber" xml:space="preserve">
+    <value>Общее количество</value>
+  </data>
+  <data name="Transactions" xml:space="preserve">
+    <value>Транзакции</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Тип</value>
+  </data>
+  <data name="Work" xml:space="preserve">
+    <value>rabotayu</value>
+  </data>
+  <data name="dashboard_Year" xml:space="preserve">
+    <value>Год</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Да!</value>
+  </data>
+  <data name="Zip" xml:space="preserve">
+    <value>Индекс</value>
+  </data>
+  <data name="contact_AdditionalInfo" xml:space="preserve">
+    <value>Дополнительная информация</value>
+  </data>
+  <data name="AddressInfo" xml:space="preserve">
+    <value>Местонахождение</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>Величина</value>
+  </data>
+  <data name="Anniversary" xml:space="preserve">
+    <value>Юбилей</value>
+  </data>
+  <data name="AnniversaryDate" xml:space="preserve">
+    <value>Русский</value>
+  </data>
+  <data name="Attendee" xml:space="preserve">
+    <value>Участник</value>
+  </data>
+  <data name="contact_BelongsTo" xml:space="preserve">
+    <value>Множество#.D0.AD.D0.BB.D0.B5.D0.BC.D0.B5.D0.BD.D1.82 .D0.BC.D0.BD.D0.BE.D0.B6.D0.B5.D1.81.D1.82.D0.B2.D0.B0</value>
+  </data>
+  <data name="dashboard_CalculateBy" xml:space="preserve">
+    <value>Считать по</value>
+  </data>
+  <data name="CategoryName" xml:space="preserve">
+    <value>Название категории</value>
+  </data>
+  <data name="dashboard_Display" xml:space="preserve">
+    <value>Display</value>
+  </data>
+  <data name="DontCall" xml:space="preserve">
+    <value>Не называйте!</value>
+  </data>
+  <data name="DontMail" xml:space="preserve">
+    <value>Не почта!</value>
+  </data>
+  <data name="Event" xml:space="preserve">
+    <value>Событие</value>
+  </data>
+  <data name="FamilyInformation" xml:space="preserve">
+    <value>Информация о семействе систем</value>
+  </data>
+  <data name="Gift" xml:space="preserve">
+    <value>Подарок</value>
+  </data>
+  <data name="HisInfoPrimary" xml:space="preserve">
+    <value>Его информация - Первичный!</value>
+  </data>
+  <data name="dashboard_NewFamilies" xml:space="preserve">
+    <value>Новые семьи</value>
+  </data>
+  <data name="contact_PersonalContactInfo" xml:space="preserve">
+    <value>Персональная контактная информация :!</value>
+  </data>
+  <data name="Primary" xml:space="preserve">
+    <value>Базовое</value>
+  </data>
+  <data name="PrimaryFemale" xml:space="preserve">
+    <value>Первичный Женский!</value>
+  </data>
+  <data name="PrimaryMale" xml:space="preserve">
+    <value>Базовое</value>
+  </data>
+  <data name="dashboard_ShowBy" xml:space="preserve">
+    <value>Сортировать по :</value>
+  </data>
+  <data name="Undo" xml:space="preserve">
+    <value>Аннулировать</value>
+  </data>
+  <data name="dashboard_UpcomingAnniversaries" xml:space="preserve">
+    <value>Предстоящие юбилеи!</value>
+  </data>
+  <data name="dashboard_UpcomingBirthdays" xml:space="preserve">
+    <value>Предстоящие Дни Рождения</value>
+  </data>
+  <data name="CancelIt" xml:space="preserve">
+    <value>Отменить</value>
+  </data>
+  <data name="delete_contact_without_transaction_Msg" xml:space="preserve">
+    <value>Вы &amp;#39;R собираетесь удалить Family. Все данные семьи будут потеряны. Ты уверен?!</value>
+  </data>
+  <data name="delete_contact_with_transaction_modal_Msg" xml:space="preserve">
+    <value>Это семейство имеет одну или несколько сделок и не могут быть удалены.!</value>
+  </data>
+  <data name="delete_card_with_transaction_modal_Msg" xml:space="preserve">
+    <value>Эта карта содержит транзакции. Вы не можете удалять карты с операциями в нем!</value>
+  </data>
+  <data name="DeleteIt" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="BatchModal_AmountFrom" xml:space="preserve">
+    <value>Величина</value>
+  </data>
+  <data name="BatchModal_AmountRange" xml:space="preserve">
+    <value>Сумма Range :!</value>
+  </data>
+  <data name="BatchModal_AmountTo" xml:space="preserve">
+    <value>Сумма к оплате</value>
+  </data>
+  <data name="BatchModal_Chk_PaymentNotSent" xml:space="preserve">
+    <value>Компенсация, которые не проверяются, как &amp;quot;послал&amp;quot;!</value>
+  </data>
+  <data name="BatchModal_Chk_PaymentReceiptChecked" xml:space="preserve">
+    <value>Компенсация, которые Квитанция проверили!</value>
+  </data>
+  <data name="BatchModal_Chk_ShowPreview" xml:space="preserve">
+    <value>Предпросмотр</value>
+  </data>
+  <data name="BatchModal_Chk_UseLetterTemplate" xml:space="preserve">
+    <value>Используйте шаблон письма для партии!</value>
+  </data>
+  <data name="BatchModal_DateRange" xml:space="preserve">
+    <value>Актуально в диапазоне дат</value>
+  </data>
+  <data name="BatchModal_Delivery" xml:space="preserve">
+    <value>Доставка</value>
+  </data>
+  <data name="BatchModal_EmailBody" xml:space="preserve">
+    <value>Электронная почта тела</value>
+  </data>
+  <data name="BatchModal_EmailCriteria" xml:space="preserve">
+    <value>Email Критерии!</value>
+  </data>
+  <data name="BatchModal_EmailOptions" xml:space="preserve">
+    <value>Параметры Email</value>
+  </data>
+  <data name="BatchModal_Filters" xml:space="preserve">
+    <value>Фильтры</value>
+  </data>
+  <data name="BatchModal_Format" xml:space="preserve">
+    <value>Формат</value>
+  </data>
+  <data name="BatchModal_FromDate" xml:space="preserve">
+    <value>От (дата)</value>
+  </data>
+  <data name="BatchModal_FromReceiptNo" xml:space="preserve">
+    <value>Квитанция</value>
+  </data>
+  <data name="BatchModal_General" xml:space="preserve">
+    <value>Общие положения</value>
+  </data>
+  <data name="BatchModal_GenerateBatch" xml:space="preserve">
+    <value>Сформировать Batch!</value>
+  </data>
+  <data name="BatchModal_GeneratePDF" xml:space="preserve">
+    <value>Генерировать PDF</value>
+  </data>
+  <data name="BatchModal_LetterName" xml:space="preserve">
+    <value>Письмо</value>
+  </data>
+  <data name="BatchModal_LetterType" xml:space="preserve">
+    <value>Письмо</value>
+  </data>
+  <data name="BatchModal_MailingAddressCriteria" xml:space="preserve">
+    <value>Почтовый адрес:</value>
+  </data>
+  <data name="BatchModal_MailingSendCriteria" xml:space="preserve">
+    <value>Рассылки и критерии :!</value>
+  </data>
+  <data name="BatchModal_NewBatch" xml:space="preserve">
+    <value>Партия</value>
+  </data>
+  <data name="BatchModal_NoTransactionMsg" xml:space="preserve">
+    <value>Нет операций, которые не совпадают с фильтрами. Пожалуйста, проверьте фильтры на вкладке General.!</value>
+  </data>
+  <data name="BatchModal_PDFOptions" xml:space="preserve">
+    <value>Параметры PDF :!</value>
+  </data>
+  <data name="BatchModal_Preview" xml:space="preserve">
+    <value>Просмотр</value>
+  </data>
+  <data name="BatchModal_ReceiptRange" xml:space="preserve">
+    <value>Получение Диапазон :!</value>
+  </data>
+  <data name="BatchModal_SendEmails" xml:space="preserve">
+    <value>Отправить сообщения</value>
+  </data>
+  <data name="BatchModal_ToDate" xml:space="preserve">
+    <value>До (дата)</value>
+  </data>
+  <data name="BatchModal_ToReceiptNo" xml:space="preserve">
+    <value>Квитанция</value>
+  </data>
+  <data name="BatchModal_ViewBatch" xml:space="preserve">
+    <value>Партия</value>
+  </data>
+  <data name="BatchModal_WhatToGenerate" xml:space="preserve">
+    <value>Что генерировать :!</value>
+  </data>
+  <data name="BatchModal_ChoseMultifilters" xml:space="preserve">
+    <value>ДОПОЛНИТЕЛЬНЫЕ ФИЛЬТРЫ</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Отменить</value>
+  </data>
+  <data name="DoYouWantSentAnotherModal" xml:space="preserve">
+    <value>Вы хотите отправить другой почту ?!</value>
+  </data>
+  <data name="PaymentLetterSendAlready" xml:space="preserve">
+    <value>Для текущего платежа письмо было уже было отправлено.!</value>
+  </data>
+  <data name="topnav_Togglenavigation" xml:space="preserve">
+    <value>Навигация</value>
+  </data>
+  <data name="topnav_CMSCloud" xml:space="preserve">
+    <value>CMS в облаке</value>
+  </data>
+  <data name="topnav_Families" xml:space="preserve">
+    <value>Семьи</value>
+  </data>
+  <data name="topnav_Loading" xml:space="preserve">
+    <value>Загрузка . . .</value>
+  </data>
+  <data name="sidebar_settings" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="sidebar_logout" xml:space="preserve">
+    <value>Выход</value>
+  </data>
+  <data name="sidebar_Dashboard" xml:space="preserve">
+    <value>Дашборд</value>
+  </data>
+  <data name="sidebar_Families" xml:space="preserve">
+    <value>Семьи</value>
+  </data>
+  <data name="sidebar_Categories" xml:space="preserve">
+    <value>Категории</value>
+  </data>
+  <data name="sidebar_Transactions" xml:space="preserve">
+    <value>Транзакции</value>
+  </data>
+  <data name="sidebar_Events" xml:space="preserve">
+    <value>События</value>
+  </data>
+  <data name="sidebar_Gifts" xml:space="preserve">
+    <value>Подарки</value>
+  </data>
+  <data name="sidebar_BatchLetters" xml:space="preserve">
+    <value>Рассылки</value>
+  </data>
+  <data name="logout_modal_Logout" xml:space="preserve">
+    <value>Выход</value>
+  </data>
+  <data name="logout_modal_Close" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="logout_modal_Youaregoing" xml:space="preserve">
+    <value>Вы собираетесь выйти из учетной записи.</value>
+  </data>
+  <data name="dashboard_Next" xml:space="preserve">
+    <value>Следующий</value>
+  </data>
+  <data name="dashboard_days" xml:space="preserve">
+    <value>дней</value>
+  </data>
+  <data name="dashboard_NothingToShow" xml:space="preserve">
+    <value>Нет данных</value>
+  </data>
+  <data name="dashboard_News" xml:space="preserve">
+    <value>Новости</value>
+  </data>
+  <data name="families_Her" xml:space="preserve">
+    <value>Её</value>
+  </data>
+  <data name="families_His" xml:space="preserve">
+    <value>Его</value>
+  </data>
+  <data name="families_Actions" xml:space="preserve">
+    <value>Действие</value>
+  </data>
+  <data name="families_Email" xml:space="preserve">
+    <value>Эл. почта</value>
+  </data>
+  <data name="families_Work" xml:space="preserve">
+    <value>Рабочий</value>
+  </data>
+  <data name="families_Mobile" xml:space="preserve">
+    <value>Мобильный</value>
+  </data>
+  <data name="families_Home" xml:space="preserve">
+    <value>Домашний</value>
+  </data>
+  <data name="families_Address" xml:space="preserve">
+    <value>Адрес</value>
+  </data>
+  <data name="families_Family" xml:space="preserve">
+    <value>Семья</value>
+  </data>
+  <data name="families_Photo" xml:space="preserve">
+    <value>Фото</value>
+  </data>
+  <data name="families_ItemsPerPage" xml:space="preserve">
+    <value>Кол-во на стр.:</value>
+  </data>
+  <data name="family_Categories" xml:space="preserve">
+    <value>Категории</value>
+  </data>
+  <data name="family_CreditCards" xml:space="preserve">
+    <value>Кредитные карты</value>
+  </data>
+  <data name="family_AddressInformation" xml:space="preserve">
+    <value>Информация по адресу</value>
+  </data>
+  <data name="family_Delete" xml:space="preserve">
+    <value>Удалить?</value>
+  </data>
+  <data name="family_Company" xml:space="preserve">
+    <value>Компания</value>
+  </data>
+  <data name="family_Address" xml:space="preserve">
+    <value>Адрес</value>
+  </data>
+  <data name="family_Addressline2" xml:space="preserve">
+    <value>Адрес 2</value>
+  </data>
+  <data name="family_City" xml:space="preserve">
+    <value>Город</value>
+  </data>
+  <data name="family_Country" xml:space="preserve">
+    <value>Страна</value>
+  </data>
+  <data name="family_Current" xml:space="preserve">
+    <value>Текущий</value>
+  </data>
+  <data name="family_CategoryName" xml:space="preserve">
+    <value>Имя категории</value>
+  </data>
+  <data name="family_CreditCardName" xml:space="preserve">
+    <value>Название кредитной карты</value>
+  </data>
+  <data name="family_EndDate" xml:space="preserve">
+    <value>Дата окончания</value>
+  </data>
+  <data name="family_Actions" xml:space="preserve">
+    <value>Действие</value>
+  </data>
+  <data name="family_FamilyInformation" xml:space="preserve">
+    <value>Информация по семье</value>
+  </data>
+  <data name="family_Anniversary" xml:space="preserve">
+    <value>Обращение</value>
+  </data>
+  <data name="family_AfterDark" xml:space="preserve">
+    <value>После заката</value>
+  </data>
+  <data name="family_Deletefamily" xml:space="preserve">
+    <value>Удалить семью</value>
+  </data>
+  <data name="family_FamilyMembers" xml:space="preserve">
+    <value>Члены семьи</value>
+  </data>
+  <data name="sidebar_UpcomingCharges" xml:space="preserve">
+    <value>Ожидающие платежы</value>
+  </data>
+  <data name="pageTitle_BatchLetters" xml:space="preserve">
+    <value>Рассылки</value>
+  </data>
+  <data name="pageTitle_Categories" xml:space="preserve">
+    <value>Категории</value>
+  </data>
+  <data name="pageTitle_Dashboard" xml:space="preserve">
+    <value>Дашборд</value>
+  </data>
+  <data name="pageTitle_Events" xml:space="preserve">
+    <value>События</value>
+  </data>
+  <data name="pageTitle_Families" xml:space="preserve">
+    <value>Семьи</value>
+  </data>
+  <data name="pageTitle_Gifts" xml:space="preserve">
+    <value>Подарки</value>
+  </data>
+  <data name="dashboard_UpcomingCharges" xml:space="preserve">
+    <value>У Вас есть ожидающие транзакции.</value>
+  </data>
+  <data name="dashboard_CheckCharges" xml:space="preserve">
+    <value>Пожалуйста проверьте.</value>
+  </data>
+  <data name="dashboard_ShowMore" xml:space="preserve">
+    <value>Показать больше</value>
+  </data>
+  <data name="dashboard_ThisMonth" xml:space="preserve">
+    <value>Текущий месяц</value>
+  </data>
+  <data name="dashboard_ShowLess" xml:space="preserve">
+    <value>Показать меньше</value>
+  </data>
+  <data name="family_ErrorUpdating" xml:space="preserve">
+    <value>Ошибка обновления записи</value>
+  </data>
+  <data name="family_FamilyAddressesInfo" xml:space="preserve">
+    <value>Информация по адресу семьи</value>
+  </data>
+  <data name="family_FamilyAdditionalInfo" xml:space="preserve">
+    <value>Дополнительная информация по семье</value>
+  </data>
+  <data name="family_Editing_AddingNewMember" xml:space="preserve">
+    <value>Редактирование / Добавление нового контакта</value>
+  </data>
+  <data name="family_Editing_AddingNewAddress" xml:space="preserve">
+    <value>Редактирование / Добавление нового адреса </value>
+  </data>
+  <data name="data_Both" xml:space="preserve">
+    <value>Оба</value>
+  </data>
+  <data name="data_April" xml:space="preserve">
+    <value>Апрель</value>
+  </data>
+  <data name="data_August" xml:space="preserve">
+    <value>Август</value>
+  </data>
+  <data name="data_December" xml:space="preserve">
+    <value>Декабрь</value>
+  </data>
+  <data name="dashboard_FailedCharges" xml:space="preserve">
+    <value>У Вас есть отклоненные платежи.</value>
+  </data>
+  <data name="sidebar_Emails" xml:space="preserve">
+    <value>Емэйлы</value>
+  </data>
+  <data name="sidebar_Mail" xml:space="preserve">
+    <value>Почта</value>
+  </data>
+  <data name="sidebar_Mails" xml:space="preserve">
+    <value>Рассылки</value>
+  </data>
+  <data name="dashboard_10_days" xml:space="preserve">
+    <value>10 дней</value>
+  </data>
+  <data name="dashboard_30_days" xml:space="preserve">
+    <value>30 дней</value>
+  </data>
+  <data name="dashboard_60_days" xml:space="preserve">
+    <value>60 дней</value>
+  </data>
+  <data name="topnav_Contacts" xml:space="preserve">
+    <value>Контакты</value>
+  </data>
+  <data name="sidebar_ContactsSettings" xml:space="preserve">
+    <value>Контакты</value>
+  </data>
+  <data name="pageTitle_Contacts" xml:space="preserve">
+    <value>Контакты</value>
+  </data>
+  <data name="family_SearchFamily" xml:space="preserve">
+    <value>Найти семью</value>
+  </data>
+</root>

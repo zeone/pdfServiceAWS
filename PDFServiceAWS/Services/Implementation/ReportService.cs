@@ -100,10 +100,10 @@ namespace PDFServiceAWS.Services.Implementation
                 GetFamiliesIds(filter);
             var transDto = FilterTransactionReport(filter);
             FillCollections(filter, ((TransFilterView)filter.view == TransFilterView.Total));
-            _groupingService.InitializeCollections(TranslateHelper.GetTranslation, _paymentMethods, _solicitors, _mailings, _departments, _categoryTree);
+            _groupingService.InitializeCollections(Startup.GetTranslation, _paymentMethods, _solicitors, _mailings, _departments, _categoryTree);
             TransactionGrouped grouped = !string.Equals(filter.totalOnlyBy, "totalOnly", StringComparison.InvariantCultureIgnoreCase)
                 ? _groupingService.TransactionTotalOnlyBy(transDto, filter) : _groupingService.TotalBy(transDto, filter);
-            _transPdfService.InitializeCollections(TranslateHelper.GetTranslation, _paymentMethods, _solicitors, _mailings, _departments, _categoryTree);
+            _transPdfService.InitializeCollections(Startup.GetTranslation, _paymentMethods, _solicitors, _mailings, _departments, _categoryTree);
             return _transPdfService.CreateDocument(new PdfDocumentDto { Filter = filter, Grouped = grouped, CountTrans = transDto.Transactions.Count });
         }
 

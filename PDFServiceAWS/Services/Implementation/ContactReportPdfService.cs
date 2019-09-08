@@ -33,11 +33,11 @@ namespace PDFServiceAWS.Services.Implementation
 
         public byte[] CreateDocument(object docObj)
         {
-            PdfDocumentDto doc = (PdfDocumentDto) docObj;
+            PdfDocumentDto doc = (PdfDocumentDto)docObj;
             var reportDto = doc.ReportDto;
             var contacts = doc.Contacts;
             CountryInSettings = reportDto.Country;
-            _translator = TranslateHelper.GetTranslation;
+            _translator = Startup.GetTranslation;
             _document = new Document { Info = { Title = reportDto.Name } };
             var cosCount = GetColCount(reportDto.Criteria);
 
@@ -389,14 +389,14 @@ namespace PDFServiceAWS.Services.Implementation
             //paragraph.Format.Alignment = ParagraphAlignment.Center;
             //Header
             Paragraph paragrapgEven = _section.Headers.EvenPage.AddParagraph();
-            paragrapgEven.AddText(GetShortName(filter.Name, 270));
+            paragrapgEven.AddText(GetShortName(string.IsNullOrEmpty(filter.Name) ? " " : filter.Name, 270));
             paragrapgEven.Format.Font.Size = 9;
             paragrapgEven.Format.LeftIndent = new Unit { Millimeter = 10 };
             paragrapgEven.Format.RightIndent = new Unit { Millimeter = 10 };
             paragrapgEven.Format.Alignment = ParagraphAlignment.Center;
 
             Paragraph paragraph = _section.Headers.Primary.AddParagraph();
-            paragraph.AddText(GetShortName(filter.Name, 270));
+            paragraph.AddText(GetShortName(string.IsNullOrEmpty(filter.Name) ? " " : filter.Name, 270));
             paragraph.Format.Font.Size = 9;
             paragraph.Format.LeftIndent = new Unit { Millimeter = 10 };
             paragraph.Format.RightIndent = new Unit { Millimeter = 10 };

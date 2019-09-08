@@ -12,7 +12,7 @@ namespace PDFServiceAWS.Services.Implementation
 {
     public class ExecutionService : IExecutionService
     {
-    //    static IReportService _service;
+        //    static IReportService _service;
 
         ConcurrentDictionary<string, QueueObject> queueDict = new ConcurrentDictionary<string, QueueObject>();
         ConcurrentDictionary<string, ServiceResponse> _sendingDict = new ConcurrentDictionary<string, ServiceResponse>();
@@ -21,22 +21,43 @@ namespace PDFServiceAWS.Services.Implementation
         private object lockObj = new object();
         public void AddTask(string qRepName, object filter, Func<object, byte[]> executor)
         {
-            if (queueDict.ContainsKey(qRepName)) return;
+            if (queueDict.ContainsKey(qRepName))
+            {
+                if (!isWorking)
+                    GenerateReports();
+                return;
+            }
             queueDict.TryAdd(qRepName, new QueueObject(filter, executor));
             if (!isSending && _sendingDict.Any())
                 SendReport();
             if (!isWorking && queueDict.Any())
-            {
-                var qObj = queueDict.First();
-                GenerateReport(qRepName, qObj.Value);
-            }
+                GenerateReports();
+
 
 
         }
 
+        void GenerateReports()
+        {
+            lock (lockObj)
+            {
+                isWorking = true;
+            }
+
+            foreach (KeyValuePair<string, QueueObject> pair in queueDict)
+            {
+                GenerateReport(pair.Key, pair.Value);
+            }
+
+            lock (lockObj)
+            {
+                isWorking = false;
+            }
+        }
         private void GenerateReport(string qRepName, QueueObject obj)
         {
-            isWorking = true;
+
+
             var repInfo = qRepName.Split('_');
             var resp = new ServiceResponse
             {
@@ -48,16 +69,16 @@ namespace PDFServiceAWS.Services.Implementation
                 switch (obj.Executor.Method.Name)
                 {
                     case "GetContactPdf":
-                        resp.PdfByteArr = obj.Executor.Invoke((ContactReportFilterRequest)obj.FilterDataObj);
+                        resp.PdfByteArr = obj.Executor.Invoke((ReportDto)obj.FilterDataObj);
                         break;
                     case "GetTransactionPdf":
-                        resp.PdfByteArr = obj.Executor.Invoke((TransactionReportFilterRequest)obj.FilterDataObj);
+                        resp.PdfByteArr = obj.Executor.Invoke((FilterTransactionReport)obj.FilterDataObj);
                         break;
                     case "CreateContactReportPDf":
-                        resp.PdfByteArr = obj.Executor.Invoke((ContactReportPdfOnlyRequest)obj.FilterDataObj);
+                        resp.PdfByteArr = obj.Executor.Invoke((PdfDocumentDto)obj.FilterDataObj);
                         break;
                     case "CreateTransactionReportPDf":
-                        resp.PdfByteArr = obj.Executor.Invoke((TransactionReportPdfOnlyRequest)obj.FilterDataObj);
+                        resp.PdfByteArr = obj.Executor.Invoke((PdfDocumentDto)obj.FilterDataObj);
                         break;
                     default:
                         throw new MissingMethodException("can't get correct method for delegate");
@@ -73,7 +94,7 @@ namespace PDFServiceAWS.Services.Implementation
             }
 
             AddToSending(resp);
-            isWorking = false;
+
 
             if (!isSending && _sendingDict.Any())
                 SendReport();
@@ -94,10 +115,14 @@ namespace PDFServiceAWS.Services.Implementation
             foreach (var response in _sendingDict)
             {
                 ServiceResponse tsResp;
+                QueueObject dicResp;
                 Task<bool> ts = new Task<bool>(Sender);
                 ts.Wait();
                 if (ts.Result)
+                {
                     _sendingDict.TryRemove(response.Key, out tsResp);
+                    queueDict.TryRemove(response.Key, out dicResp);
+                }
             }
             lock (lockObj)
             {

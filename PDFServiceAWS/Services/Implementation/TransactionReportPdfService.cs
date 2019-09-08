@@ -260,14 +260,14 @@ namespace PDFServiceAWS.Services.Implementation
 
             //Header
             Paragraph paragrapgEven = _section.Headers.EvenPage.AddParagraph();
-            paragrapgEven.AddText(GetShortName(filter.Name, pageSize.Orientation == Orientation.Portrait ? 310 : 470));
+            paragrapgEven.AddText(GetShortName(string.IsNullOrEmpty(filter.Name) ? " " : filter.Name, pageSize.Orientation == Orientation.Portrait ? 310 : 470));
             paragrapgEven.Format.Font.Size = 9;
             paragrapgEven.Format.LeftIndent = new Unit { Millimeter = 10 };
             paragrapgEven.Format.RightIndent = new Unit { Millimeter = 10 };
             paragrapgEven.Format.Alignment = ParagraphAlignment.Center;
 
             Paragraph paragraph = _section.Headers.Primary.AddParagraph();
-            paragraph.AddText(GetShortName(filter.Name, pageSize.Orientation == Orientation.Portrait ? 310 : 470));
+            paragraph.AddText(GetShortName(string.IsNullOrEmpty(filter.Name) ? " " : filter.Name, pageSize.Orientation == Orientation.Portrait ? 310 : 470));
             paragraph.Format.Font.Size = 9;
             paragraph.Format.LeftIndent = new Unit { Millimeter = 10 };
             paragraph.Format.RightIndent = new Unit { Millimeter = 10 };

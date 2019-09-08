@@ -59,7 +59,7 @@ namespace PDFServiceAWS.DB
 
             // create the DB context per current schema
             // var perSchemaSqlDbContext = new PerSchemaSqlDbContext(schema.Equals(SharedSchema) ? SharedConnectionString : BaseConnectionString, schema);
-            string conStr = ConfigurationManager.AppSettings["connStr"];
+            string conStr = Startup.Configuration["connStr"];
             var perSchemaSqlDbContext = new PerSchemaSqlDbContext(conStr, schema);
 
             ConstructorArgument[] ctorArgs = new[]{
@@ -83,7 +83,7 @@ namespace PDFServiceAWS.DB
 
             // schema.Equals(SharedSchema) ? BaseConnectionString : SharedConnectionString is a hack this should be done in a better way
             // var perSchemaSqlDbContext = new PerSchemaSqlDbContext(schema.Equals(SharedSchema) ? SharedConnectionString : BaseConnectionString, schema);
-            string conStr = ConfigurationManager.AppSettings["connStr"];
+            string conStr = Startup.Configuration["connStr"];
             var perSchemaSqlDbContext = new PerSchemaSqlDbContext(conStr, schema);
             ConstructorArgument[] ctorArgs = new[]{
                 new ConstructorArgument("dbContext", perSchemaSqlDbContext),
