@@ -6,12 +6,12 @@ using System.Web;
 
 namespace PDFServiceAWS.Enums
 {
-    [DataContract]
+    
     public enum ReportTypes
     {
-        [EnumMember]
+         
         ContactReport = 1,
-        [EnumMember]
+         
         TransactionReport = 2
     }
 }

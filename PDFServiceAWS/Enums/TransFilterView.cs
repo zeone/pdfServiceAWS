@@ -6,12 +6,12 @@ using System.Web;
 
 namespace PDFServiceAWS.Enums
 {
-    [DataContract]
+    
     public enum TransFilterView
     {
-        [EnumMember]
+         
         Details = 0,
-        [EnumMember]
+         
         Total = 1
     }
 }

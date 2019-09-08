@@ -6,14 +6,14 @@ using System.Web;
 
 namespace PDFServiceAWS.Enums
 {
-    [DataContract]
+    
     public enum ReportColumnsFilter
     {
-        [EnumMember]
+         
         All,
-        [EnumMember]
+         
         With,
-        [EnumMember]
+         
         Without
     }
 }
