@@ -30,7 +30,7 @@ namespace PDFServiceAWS.Controllers
             {
                 _reportService = NinjectBulder.Container.Get<IReportService>(new ConstructorArgument("schema", request.Schema));
 
-                _executionService.AddTask($"{request.ReportQId}_{request.Schema}",
+                _executionService.AddTask($"{request.PdfReportId}_{request.Schema}",
                     (object)request.ReportDto, _reportService.GetContactPdf);
             }
             catch (Exception e)
@@ -50,7 +50,7 @@ namespace PDFServiceAWS.Controllers
                 _reportService = NinjectBulder.Container.Get<IReportService>(new ConstructorArgument("schema", request.Schema));
                 request.ReportDto = new ReportDto();
                 request.ReportDto.Country = request.CountryName;
-                _executionService.AddTask($"{request.ReportQId}_{request.Schema}",
+                _executionService.AddTask($"{request.PdfReportId}_{request.Schema}",
                     (object)request.Filter, _reportService.GetTransactionPdf);
             }
             catch (Exception e)
@@ -76,7 +76,7 @@ namespace PDFServiceAWS.Controllers
                     ReportDto = request.ReportDto,
                     Contacts = request.Contacts
                 };
-                _executionService.AddTask($"{request.ReportQId}_{request.Schema}",
+                _executionService.AddTask($"{request.PdfReportId}_{request.Schema}",
                     (object)pdfDoc, contactPdfService.CreateDocument);
             }
             catch (Exception e)
@@ -101,7 +101,7 @@ namespace PDFServiceAWS.Controllers
                     Grouped = request.Grouped,
                     CountTrans = request.TransactionCount
                 };
-                _executionService.AddTask($"{request.ReportQId}_{request.Schema}",
+                _executionService.AddTask($"{request.PdfReportId}_{request.Schema}",
                     (object)pdfDoc, transPdfService.CreateDocument);
             }
             catch (Exception e)

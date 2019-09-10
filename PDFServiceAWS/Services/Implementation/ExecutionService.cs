@@ -59,10 +59,13 @@ namespace PDFServiceAWS.Services.Implementation
 
 
             var repInfo = qRepName.Split('_');
+            //todo: send all object not only filters
+            var reportData = (BaseFilterRequest)obj.FilterDataObj;
             var resp = new ServiceResponse
             {
-                ReportQId = int.Parse(repInfo[0]),
-                Schema = repInfo[1]
+                PdfReportId = reportData.PdfReportId,
+                Schema = reportData.Schema,
+                Key = reportData.Key
             };
             try
             {
