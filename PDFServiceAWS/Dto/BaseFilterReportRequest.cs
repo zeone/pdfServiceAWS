@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace PDFServiceAWS.Dto
 {
 
-    public class BaseFilterRequest
+    public class BaseFilterReportRequest
     {
 
         public int PdfReportId { get; set; }

@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace PDFServiceAWS.Dto
 {
     
-    public class TransactionReportPdfOnlyRequest : BaseFilterRequest
+    public class TransactionReportPdfOnlyRequest : BaseFilterReportRequest
     {
          
         public TransactionGrouped Grouped { get; set; }

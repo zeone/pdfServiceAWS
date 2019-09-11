@@ -110,13 +110,12 @@ namespace PDFServiceAWS.Services.Implementation
         public byte[] GetContactPdf(object reportDtoObj)
         {
             ReportDto reportDto = (ReportDto)reportDtoObj;
-            var country = reportDto.Country;
             var contactDto = FilterContactReport(reportDto.Criteria).OrderBy(d => d.FamilyName).ToList();
             if (reportDto.Criteria.Columns != null && reportDto.Criteria.Columns.Any(r => r.Filter != ReportColumnsFilter.All))
                 contactDto = FilterContactReportByColumns(reportDto.Criteria, contactDto.ToList()).ToList();
             if (reportDto.AdditionalPreferences.ExportType != "labels" &&
                 reportDto.AdditionalPreferences.ExportType != "envelopes")
-                country = string.Empty;
+                reportDto.Country = string.Empty;
 
             return _contactPdfService.CreateDocument(new PdfDocumentDto { ReportDto = reportDto, Contacts = contactDto.ToList() });
         }

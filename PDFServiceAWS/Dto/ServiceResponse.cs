@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Runtime.Serialization;
+using PDFServiceAWS.Enums;
 
 namespace PDFServiceAWS.Dto
 {
 
-    public class ServiceResponse
+    public class UploadPdfReportDto
     {
 
         public int PdfReportId { get; set; }
@@ -13,11 +14,11 @@ namespace PDFServiceAWS.Dto
 
         public string Schema { get; set; }
 
-        public bool IsSuccess { get; set; }
+        public PDFReportStatus Status { get; set; }
 
         public byte[] PdfByteArr { get; set; }
 
-        public string ErrorMessage { get; set; }
+        public string Message { get; set; }
 
         public string StackTrace { get; set; }
     }

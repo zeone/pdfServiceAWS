@@ -2,11 +2,11 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using System.Web;
-using Ninject;
-using Ninject.Parameters;
 using PDFServiceAWS.Dto;
+using PDFServiceAWS.Enums;
 
 namespace PDFServiceAWS.Services.Implementation
 {
@@ -15,29 +15,33 @@ namespace PDFServiceAWS.Services.Implementation
         //    static IReportService _service;
 
         ConcurrentDictionary<string, QueueObject> queueDict = new ConcurrentDictionary<string, QueueObject>();
-        ConcurrentDictionary<string, ServiceResponse> _sendingDict = new ConcurrentDictionary<string, ServiceResponse>();
+        ConcurrentDictionary<string, UploadPdfReportDto> _sendingDict = new ConcurrentDictionary<string, UploadPdfReportDto>();
         private bool isWorking = false;
         private bool isSending = false;
         private object lockObj = new object();
-        public void AddTask(string qRepName, object filter, Func<object, byte[]> executor)
+        private readonly string baseSenderAddress;
+
+        public ExecutionService()
+        {
+            baseSenderAddress = Startup.Configuration["baseSenderAddress"];
+        }
+        public async Task<bool> AddTask(string qRepName, object filter, Func<object, byte[]> executor)
         {
             if (queueDict.ContainsKey(qRepName))
             {
                 if (!isWorking)
-                    GenerateReports();
-                return;
+                    await GenerateReports();
+                return true;
             }
             queueDict.TryAdd(qRepName, new QueueObject(filter, executor));
             if (!isSending && _sendingDict.Any())
-                SendReport();
+                await SendReport();
             if (!isWorking && queueDict.Any())
-                GenerateReports();
-
-
-
+                await GenerateReports();
+            return true;
         }
 
-        void GenerateReports()
+        async Task<bool> GenerateReports()
         {
             lock (lockObj)
             {
@@ -46,52 +50,67 @@ namespace PDFServiceAWS.Services.Implementation
 
             foreach (KeyValuePair<string, QueueObject> pair in queueDict)
             {
-                GenerateReport(pair.Key, pair.Value);
+                await GenerateReport(pair.Key, pair.Value);
             }
 
             lock (lockObj)
             {
                 isWorking = false;
             }
+
+            return true;
         }
-        private void GenerateReport(string qRepName, QueueObject obj)
+        private async Task<bool> GenerateReport(string qRepName, QueueObject obj)
         {
-
-
-            var repInfo = qRepName.Split('_');
-            //todo: send all object not only filters
-            var reportData = (BaseFilterRequest)obj.FilterDataObj;
-            var resp = new ServiceResponse
+            var reportData = (BaseFilterReportRequest)obj.FilterDataObj;
+            var resp = new UploadPdfReportDto
             {
                 PdfReportId = reportData.PdfReportId,
                 Schema = reportData.Schema,
-                Key = reportData.Key
+                Key = reportData.Key,
+                Status = PDFReportStatus.Ready
             };
             try
             {
+                PdfDocumentDto pdfDoc;
+                BaseFilterReportRequest req;
                 switch (obj.Executor.Method.Name)
                 {
                     case "GetContactPdf":
-                        resp.PdfByteArr = obj.Executor.Invoke((ReportDto)obj.FilterDataObj);
+                        req = (BaseFilterReportRequest)obj.FilterDataObj;
+                        resp.PdfByteArr = obj.Executor.Invoke(req.ReportDto);
                         break;
                     case "GetTransactionPdf":
-                        resp.PdfByteArr = obj.Executor.Invoke((FilterTransactionReport)obj.FilterDataObj);
+                        req = (BaseFilterReportRequest)obj.FilterDataObj;
+                        resp.PdfByteArr = obj.Executor.Invoke(req.Filter);
                         break;
                     case "CreateContactReportPDf":
-                        resp.PdfByteArr = obj.Executor.Invoke((PdfDocumentDto)obj.FilterDataObj);
+                        var reqContPdf = (ContactReportPdfOnlyRequest)obj.FilterDataObj;
+                        pdfDoc = new PdfDocumentDto
+                        {
+                            ReportDto = reqContPdf.ReportDto,
+                            Contacts = reqContPdf.Contacts
+                        };
+                        resp.PdfByteArr = obj.Executor.Invoke(pdfDoc);
                         break;
                     case "CreateTransactionReportPDf":
-                        resp.PdfByteArr = obj.Executor.Invoke((PdfDocumentDto)obj.FilterDataObj);
+                        var reqTransPdf = (TransactionReportPdfOnlyRequest)obj.FilterDataObj;
+                        pdfDoc = new PdfDocumentDto
+                        {
+                            Filter = reqTransPdf.Filter,
+                            Grouped = reqTransPdf.Grouped,
+                            CountTrans = reqTransPdf.TransactionCount
+                        };
+                        resp.PdfByteArr = obj.Executor.Invoke(pdfDoc);
                         break;
                     default:
                         throw new MissingMethodException("can't get correct method for delegate");
                 }
-
             }
             catch (Exception e)
             {
-                resp.IsSuccess = false;
-                resp.ErrorMessage = e.Message;
+                resp.Status = PDFReportStatus.GenerationError;
+                resp.Message = e.Message;
                 resp.StackTrace = e.StackTrace;
                 isWorking = false;
             }
@@ -100,28 +119,28 @@ namespace PDFServiceAWS.Services.Implementation
 
 
             if (!isSending && _sendingDict.Any())
-                SendReport();
+                await SendReport();
+            return true;
         }
 
-        private void AddToSending(ServiceResponse resp)
+        private void AddToSending(UploadPdfReportDto resp)
         {
-            _sendingDict.TryAdd($"{resp.ReportQId}_{resp.Schema}", resp);
+            _sendingDict.TryAdd($"{resp.PdfReportId}_{resp.Schema}", resp);
         }
 
-        void SendReport()
+        async Task<bool> SendReport()
         {
             lock (lockObj)
             {
                 isSending = true;
             }
-            if (!_sendingDict.Any()) return;
+            if (!_sendingDict.Any()) return false;
             foreach (var response in _sendingDict)
             {
-                ServiceResponse tsResp;
+                UploadPdfReportDto tsResp;
                 QueueObject dicResp;
-                Task<bool> ts = new Task<bool>(Sender);
-                ts.Wait();
-                if (ts.Result)
+                var result = await Sender(response.Value);
+                if (result)
                 {
                     _sendingDict.TryRemove(response.Key, out tsResp);
                     queueDict.TryRemove(response.Key, out dicResp);
@@ -131,42 +150,21 @@ namespace PDFServiceAWS.Services.Implementation
             {
                 isSending = false;
             }
+
+            return true;
         }
 
-        private bool Sender()
+        private async Task<bool> Sender(UploadPdfReportDto request)
         {
-            throw new NotImplementedException();
+            HttpClient client = new HttpClient();
+            var baseUrlStr = string.Format(baseSenderAddress, request.Schema);
+            client.BaseAddress = new Uri(baseUrlStr);
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+            var result = await client.PostAsJsonAsync("api/report/UploadPdfReport", request);
+            return result.IsSuccessStatusCode;
         }
 
-        //byte[] GetContactPdf(ContactReportFilterRequest request)
-        //{
-        //    _service = NinjectBulder.Container.Get<IReportService>(new ConstructorArgument("schema", request.Schema));
-
-        //    return _service.get(request.ReportDto, TranslateHelper.GetTranslation, request.CountryName);
-        //}
-
-        //byte[] GetTransactionPdf(TransactionReportFilterRequest request)
-        //{
-        //    var contactPdfService = NinjectBulder.Container.Get<IReportService>(new ConstructorArgument("schema", request.Schema));
-
-        //    return contactPdfService.GetPdf(request.Filter, TranslateHelper.GetTranslation);
-
-        //}
-
-        //byte[] CreateContactReportPDf(ContactReportPdfOnlyRequest request)
-        //{
-        //    var contactPdfService = NinjectBulder.Container.Get<IContactReportPdfService>(new ConstructorArgument("schema", request.Schema));
-
-        //    return contactPdfService.CreateDocument(request.ReportDto, request.Contacts, request.CountryName,
-        //        TranslateHelper.GetTranslation);
-        //}
-
-        //byte[] CreateTransactionReportPDf(TransactionReportPdfOnlyRequest request)
-        //{
-        //    var transPdfService = NinjectBulder.Container.Get<ITransactionReportPdfService>(new ConstructorArgument("schema", request.Schema));
-        //    transPdfService.InitializeCollections(TranslateHelper.GetTranslation, request.PaymentMethods, request.Solicitors, request.Mailings, request.Departments, request.CategoryTree);
-
-        //    return transPdfService.CreateDocument(request.Filter, request.Grouped, request.TransactionCount);
-        //}
     }
 }
