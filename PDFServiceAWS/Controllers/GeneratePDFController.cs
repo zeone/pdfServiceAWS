@@ -24,13 +24,13 @@ namespace PDFServiceAWS.Controllers
 
         #region Filter and create Pdf report file
         [HttpPost]
-        public async Task<IActionResult> GetContactPdf([FromBody]BaseFilterReportRequest request)
+        public IActionResult GetContactPdf([FromBody]BaseFilterReportRequest request)
         {
             try
             {
                 _reportService = NinjectBulder.Container.Get<IReportService>(new ConstructorArgument("schema", request.Schema));
 
-                await _executionService.AddTask($"{request.PdfReportId}_{request.Schema}",
+                _executionService.AddTask($"{request.PdfReportId}_{request.Schema}",
                       (object)request, _reportService.GetContactPdf);
             }
             catch (Exception e)
@@ -43,14 +43,14 @@ namespace PDFServiceAWS.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> GetTransactionPdf([FromBody]BaseFilterReportRequest request)
+        public IActionResult GetTransactionPdf([FromBody]BaseFilterReportRequest request)
         {
             try
             {
                 _reportService = NinjectBulder.Container.Get<IReportService>(new ConstructorArgument("schema", request.Schema));
                 request.ReportDto = new ReportDto();
                 request.ReportDto.Country = request.CountryName;
-                await _executionService.AddTask($"{request.PdfReportId}_{request.Schema}",
+                _executionService.AddTask($"{request.PdfReportId}_{request.Schema}",
                        (object)request, _reportService.GetTransactionPdf);
             }
             catch (Exception e)
@@ -65,13 +65,13 @@ namespace PDFServiceAWS.Controllers
         #region Create only Pdf report file
 
         [HttpPost]
-        public async Task<IActionResult> CreateContactReportPDf([FromBody]ContactReportPdfOnlyRequest request)
+        public IActionResult CreateContactReportPDf([FromBody]ContactReportPdfOnlyRequest request)
         {
             try
             {
                 var contactPdfService = NinjectBulder.Container.Get<IContactReportPdfService>(new ConstructorArgument("schema", request.Schema));
 
-                await _executionService.AddTask($"{request.PdfReportId}_{request.Schema}",
+                _executionService.AddTask($"{request.PdfReportId}_{request.Schema}",
                      request, contactPdfService.CreateDocument);
             }
             catch (Exception e)
@@ -83,7 +83,7 @@ namespace PDFServiceAWS.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> CreateTransactionReportPDf([FromBody]TransactionReportPdfOnlyRequest request)
+        public IActionResult CreateTransactionReportPDf([FromBody]TransactionReportPdfOnlyRequest request)
         {
             try
             {
@@ -91,7 +91,7 @@ namespace PDFServiceAWS.Controllers
                 transPdfService.InitializeCollections(Startup.GetTranslation, request.PaymentMethods, request.Solicitors, request.Mailings, request.Departments, request.CategoryTree);
 
 
-                await _executionService.AddTask($"{request.PdfReportId}_{request.Schema}",
+                _executionService.AddTask($"{request.PdfReportId}_{request.Schema}",
                      request, transPdfService.CreateDocument);
             }
             catch (Exception e)

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
 using PDFServiceAWS.Dto;
 using PDFServiceAWS.Enums;
@@ -25,38 +26,48 @@ namespace PDFServiceAWS.Services.Implementation
         {
             baseSenderAddress = Startup.Configuration["baseSenderAddress"];
         }
-        public async Task<bool> AddTask(string qRepName, object filter, Func<object, byte[]> executor)
+        public void AddTask(string qRepName, object filter, Func<object, byte[]> executor)
         {
             if (queueDict.ContainsKey(qRepName))
             {
                 if (!isWorking)
-                    await GenerateReports();
-                return true;
+                    _ = Task.Run(GenerateReports);
+                return;
             }
             queueDict.TryAdd(qRepName, new QueueObject(filter, executor));
             if (!isSending && _sendingDict.Any())
-                await SendReport();
+                _ = Task.Run(SendReport);
             if (!isWorking && queueDict.Any())
-                await GenerateReports();
-            return true;
+                _ = Task.Run(GenerateReports);
         }
 
         async Task<bool> GenerateReports()
         {
-            lock (lockObj)
+            try
             {
-                isWorking = true;
+                lock (lockObj)
+                {
+                    isWorking = true;
+                }
+
+                foreach (KeyValuePair<string, QueueObject> pair in queueDict)
+                {
+                    await GenerateReport(pair.Key, pair.Value);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                lock (lockObj)
+                {
+                    isWorking = false;
+                }
             }
 
-            foreach (KeyValuePair<string, QueueObject> pair in queueDict)
-            {
-                await GenerateReport(pair.Key, pair.Value);
-            }
 
-            lock (lockObj)
-            {
-                isWorking = false;
-            }
 
             return true;
         }
@@ -130,26 +141,38 @@ namespace PDFServiceAWS.Services.Implementation
 
         async Task<bool> SendReport()
         {
-            lock (lockObj)
+            try
             {
-                isSending = true;
-            }
-            if (!_sendingDict.Any()) return false;
-            foreach (var response in _sendingDict)
-            {
-                UploadPdfReportDto tsResp;
-                QueueObject dicResp;
-                var result = await Sender(response.Value);
-                if (result)
+                lock (lockObj)
                 {
-                    _sendingDict.TryRemove(response.Key, out tsResp);
-                    queueDict.TryRemove(response.Key, out dicResp);
+                    isSending = true;
+                }
+
+                if (!_sendingDict.Any()) return false;
+                foreach (var response in _sendingDict)
+                {
+                    UploadPdfReportDto tsResp;
+                    QueueObject dicResp;
+                    var result = await Sender(response.Value);
+                    if (result)
+                    {
+                        _sendingDict.TryRemove(response.Key, out tsResp);
+                        queueDict.TryRemove(response.Key, out dicResp);
+                    }
                 }
             }
-            lock (lockObj)
+            catch (Exception e)
             {
-                isSending = false;
+                return false;
             }
+            finally
+            {
+                lock (lockObj)
+                {
+                    isSending = false;
+                }
+            }
+
 
             return true;
         }
@@ -162,7 +185,10 @@ namespace PDFServiceAWS.Services.Implementation
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
-            var result = await client.PostAsJsonAsync("api/report/UploadPdfReport", request);
+            var req = Newtonsoft.Json.JsonConvert.SerializeObject(request);
+            //var result = await client.PostAsJsonAsync("api/report/UploadPdfReport", request);
+            HttpContent inputContent = new StringContent(req, Encoding.UTF8, "application/json");
+            var result = await client.PostAsync("api/report/UploadPdfReport", inputContent);
             return result.IsSuccessStatusCode;
         }
 

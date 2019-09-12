@@ -8,7 +8,7 @@ namespace PDFServiceAWS.Services
 {
     public interface IExecutionService
     {
-        Task<bool> AddTask(string qRepName, object filter, Func<object,byte[]> executor);
+        void AddTask(string qRepName, object filter, Func<object, byte[]> executor);
 
     }
 }
